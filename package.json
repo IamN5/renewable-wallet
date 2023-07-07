@@ -4,10 +4,16 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "ios": "react-native run-ios",
+    "ios": "react-native run-ios --simulator=\"iPhone 14 Pro\"",
+    "ios2": "react-native run-ios --simulator=\"iPhone 14\"",
+    "ipad": "react-native run-ios --simulator=\"iPad Air (5th generation)\"",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "pod": "cd ios && pod install && cd ..",
+    "xcode": "xed ./ios/Iwa.xcworkspace",
+    "gradle": "cd android && ./gradlew clean && cd ..",
+    "clear-pod": "cd ios && pod deintegrate && pod setup && pod install && cd .."
   },
   "dependencies": {
     "@hookform/resolvers": "^3.1.1",
