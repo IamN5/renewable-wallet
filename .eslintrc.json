@@ -52,6 +52,7 @@
         "variables": false
       }
     ],
-    "import/no-unresolved": "error"
+    "import/no-unresolved": "error",
+    "class-methods-use-this": "off"
   }
 }
