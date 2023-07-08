@@ -3,8 +3,8 @@ import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
-import RootNavigation from '@routes/index';
 import store from '@store/index';
+import RootNavigation from '@routes/index';
 
 function App(): JSX.Element {
   return (

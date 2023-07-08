@@ -18,7 +18,8 @@
       "typescript": {
         "alwaysTryTypes": true,
         "project": "./tsconfig.json"
-      }
+      },
+      "babel-module": {}
     }
   },
   "overrides": [],
@@ -53,6 +54,8 @@
       }
     ],
     "import/no-unresolved": "error",
-    "class-methods-use-this": "off"
+    "class-methods-use-this": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/require-default-props": "off"
   }
 }
