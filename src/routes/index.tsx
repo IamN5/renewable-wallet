@@ -7,7 +7,7 @@ import { useAppSelector } from '@hooks/store';
 import { logIn } from '@store/slices/user';
 import storage from '@services/storage';
 import { ACCESS_TOKEN_KEY } from '@app-types/user';
-import BottomTabs from '@components/BottomTabs';
+import BottomTabs from '@organisms/BottomTabs';
 import HomeTabIcon from '@assets/icons/HomeTabIcon';
 import TradeTabIcon from '@assets/icons/TradeTabIcon';
 import PortfolioTabIcon from '@assets/icons/PortfolioTabIcon';

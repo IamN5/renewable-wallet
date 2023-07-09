@@ -5,19 +5,19 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-import { RHFInput } from '@components/Input';
-import Button from '@components/Button';
-import Subtitle from '@components/atoms/Subtitle';
-import Link from '@components/atoms/Link';
+import { RHFInput } from '@atoms/Input';
+import Button from '@atoms/Button';
+import Subtitle from '@atoms/Subtitle';
+import Link from '@atoms/Link';
 import EyeIcon from '@assets/icons/EyeIcon';
 import palette from '@utils/theme';
-import TogglableIcon from '@components/TogglableIcon';
+import TogglableIcon from '@molecules/TogglableIcon';
 import { IUserLoginForm, UserLoginSchema } from '@app-types/user';
 import { useAppDispatch } from '@hooks/store';
 import { tryUserLogin } from '@store/slices/user';
 import { AppStackParams } from '@app-types/routes';
 import { useNavigation } from '@react-navigation/native';
-import Header from '@components/Header';
+import Header from '@organisms/Header';
 import styles from './styles';
 
 type NavigationProps = NativeStackScreenProps<
