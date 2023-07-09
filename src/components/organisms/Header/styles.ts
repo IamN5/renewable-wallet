@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 20,
+    paddingBottom: 20,
     borderBottomWidth: 1,
     borderBottomColor: palette.grey,
   },
@@ -33,6 +33,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: Dimensions.get('window').width * 0.1,
     bottom: 0,
+  },
+  backIconContainer: {
+    zIndex: 1,
   },
 });
 
