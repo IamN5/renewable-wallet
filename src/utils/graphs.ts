@@ -1,5 +1,6 @@
+/* eslint-disable no-nested-ternary */
 export const windFundData = [
-  { value: 0, label: '', labelComponent: () => {} },
+  { value: 2, label: '', labelComponent: () => {} },
   { value: 20, label: '', labelComponent: () => {} },
   { value: 18, label: '', labelComponent: () => {} },
   { value: 40, label: '', labelComponent: () => {} },
@@ -17,6 +18,12 @@ const windFundMin = Math.min(...windFundData.map(item => item.value));
 export const windFundDetailedData = windFundData.map(item => ({
   ...item,
   hideDataPoint: item.value !== windFundMax && item.value !== windFundMin,
+  dataPointText:
+    item.value === windFundMax
+      ? `$${windFundMax}`
+      : item.value === windFundMin
+      ? `$${windFundMin}`
+      : '',
 }));
 
 export const solarFundData = [
