@@ -25,10 +25,6 @@ function Header({ title, subtitle, showBack }: IHeader) {
     navigation.goBack();
   };
 
-  useEffect(() => {
-    console.log(title, subtitle, showBack);
-  }, [title, subtitle, showBack]);
-
   return (
     <View style={[styles.container, { paddingTop: top, height: top + 52 }]}>
       {showBack && (

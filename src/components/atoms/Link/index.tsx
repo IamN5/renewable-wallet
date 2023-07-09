@@ -4,12 +4,15 @@ import styles from './style';
 
 interface ILink {
   children: string;
-  onPress: () => void;
+  onPress?: () => void;
 }
 
 function Link({ children, onPress }: ILink) {
   return (
-    <Text onPress={onPress} style={styles.link}>
+    <Text
+      suppressHighlighting={!!onPress}
+      onPress={onPress}
+      style={styles.link}>
       {children}
     </Text>
   );
