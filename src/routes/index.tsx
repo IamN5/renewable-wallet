@@ -65,7 +65,7 @@ function RootNavigation() {
     };
 
     checkForToken();
-  });
+  }, [dispatch]);
 
   const newRoutes = useMemo(
     () =>
