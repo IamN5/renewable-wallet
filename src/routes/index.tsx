@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigatorScreenParams } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
 
 import { useAppSelector } from '@hooks/store';
@@ -17,18 +16,7 @@ import Home from '@pages/Home';
 import Trade from '@pages/Trade';
 import Portfolio from '@pages/Portfolio';
 import SignUp from '@pages/SignUp';
-
-export type NavigatorParams = {
-  Home: undefined;
-  Trade: undefined;
-  Portfolio: undefined;
-};
-
-export type AppStackParams = {
-  AppBottomNavigator: NavigatorScreenParams<NavigatorParams>;
-  Login: undefined;
-  SignUp: undefined;
-};
+import { AppStackParams } from '@app-types/routes';
 
 const AppStack = createNativeStackNavigator<AppStackParams>();
 const AppTab = createBottomTabNavigator();
