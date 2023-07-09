@@ -33,14 +33,14 @@ function BottomTabs({ state, descriptors, navigation }: Props) {
             {!!options.tabBarIcon &&
               options.tabBarIcon({
                 focused: isFocused,
-                color: palette.primary,
+                color: 'black',
                 size: 24,
               })}
             <Text
               style={[
                 styles.label,
                 {
-                  color: isFocused ? palette.primary : palette.grey,
+                  color: isFocused ? palette.primary : 'black',
                 },
               ]}>
               {label}

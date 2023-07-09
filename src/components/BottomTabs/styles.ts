@@ -1,5 +1,5 @@
 import palette from '@utils/theme';
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -10,11 +10,11 @@ const styles = StyleSheet.create({
     height: 120,
     borderTopWidth: 1,
     borderTopColor: palette.tabBarBorder,
-    shadowColor: palette.tabBarShadow,
-    shadowRadius: 8,
-    shadowOpacity: 0.5,
+    // shadowColor: palette.tabBarShadow,
+    // shadowRadius: 8,
+    // shadowOpacity: 0.5,
     backgroundColor: 'white',
-    elevation: 4,
+    // elevation: 4,
   },
   button: {
     justifyContent: 'center',
