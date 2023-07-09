@@ -1,6 +1,13 @@
 import palette from '@utils/theme';
 import React from 'react';
-import { Text, TouchableOpacity, View, ViewStyle } from 'react-native';
+import {
+  StyleProp,
+  Text,
+  TextStyle,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from 'react-native';
 import styles from './styles';
 
 interface IButton {
@@ -9,9 +16,19 @@ interface IButton {
   isDisabled?: boolean;
   style?: ViewStyle;
   color?: string;
+  buttonStyle?: StyleProp<ViewStyle>;
+  labelStyle?: StyleProp<TextStyle>;
 }
 
-function Button({ label, onPress, isDisabled, style, color }: IButton) {
+function Button({
+  label,
+  onPress,
+  isDisabled,
+  style,
+  color,
+  labelStyle,
+  buttonStyle,
+}: IButton) {
   return (
     <TouchableOpacity
       style={[{ width: '90%' }, style]}
@@ -21,9 +38,10 @@ function Button({ label, onPress, isDisabled, style, color }: IButton) {
         style={[
           styles.container,
           { backgroundColor: color ?? palette.primary },
+          buttonStyle,
         ]}>
         <View style={[styles.labelWrapper]}>
-          <Text style={[styles.label]}>{label}</Text>
+          <Text style={[styles.label, labelStyle]}>{label}</Text>
         </View>
       </View>
     </TouchableOpacity>
