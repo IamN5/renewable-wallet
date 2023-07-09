@@ -1,11 +1,17 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ACCESS_TOKEN_KEY, IUser, IUserLoginForm } from '@app-types/user';
+import {
+  ACCESS_TOKEN_KEY,
+  IUser,
+  IUserLoginForm,
+  IUserSignUpForm,
+} from '@app-types/user';
 import storage from '@services/storage';
 
 interface IUserState {
   user: IUser;
   token: string;
   isLoggedIn: boolean;
+  registerStatus?: 'idle' | 'success' | 'failed';
 }
 
 const initialState: IUserState = {
@@ -58,6 +64,13 @@ export const userLogout = createAsyncThunk<void, void>(
   },
 );
 
+export const tryUserSignUp = createAsyncThunk<void, IUserSignUpForm>(
+  'user/tryUserSignUp',
+  async (userData, { rejectWithValue }) => {
+    // Here we would try to sign up the user by POSTing our API
+  },
+);
+
 const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -78,6 +91,13 @@ const userSlice = createSlice({
         },
       };
     },
+    setSignUpStatus: (
+      state,
+      action: PayloadAction<'idle' | 'success' | 'failed'>,
+    ) => ({
+      ...state,
+      registerStatus: action.payload,
+    }),
   },
   extraReducers: builder => {
     builder
@@ -96,10 +116,14 @@ const userSlice = createSlice({
         ...state,
         isLoggedIn: false,
         user: initialState.user,
+      }))
+      .addCase(tryUserSignUp.fulfilled, state => ({
+        ...state,
+        registerStatus: 'success',
       }));
   },
 });
 
-export const { logIn } = userSlice.actions;
+export const { logIn, setSignUpStatus } = userSlice.actions;
 
 export default userSlice.reducer;
