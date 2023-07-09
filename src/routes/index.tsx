@@ -16,24 +16,39 @@ import Home from '@pages/Home';
 import Trade from '@pages/Trade';
 import Portfolio from '@pages/Portfolio';
 import SignUp from '@pages/SignUp';
-import { AppStackParams } from '@app-types/routes';
+import { AppStackParams, HomeStackParams } from '@app-types/routes';
+import Asset from '@pages/Asset';
 
 const AppStack = createNativeStackNavigator<AppStackParams>();
+const HomeStack = createNativeStackNavigator<HomeStackParams>();
 const AppTab = createBottomTabNavigator();
+
+function HomeStackScreen() {
+  return (
+    <HomeStack.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        headerShown: false,
+      }}>
+      <HomeStack.Screen name="Home" component={Home} />
+      <HomeStack.Screen name="Asset" component={Asset} />
+    </HomeStack.Navigator>
+  );
+}
 
 function AppBottomNavigator() {
   return (
     <AppTab.Navigator
-      initialRouteName="Home"
+      initialRouteName="HomeStack"
       tabBar={BottomTabs}
       screenOptions={{
         headerShown: false,
       }}
       id="AppBottomNavigator">
       <AppTab.Screen
-        name="Home"
+        name="HomeStack"
         options={{ tabBarLabel: 'Home', tabBarIcon: HomeTabIcon }}
-        component={Home}
+        component={HomeStackScreen}
       />
       <AppTab.Screen
         name="Trade"
