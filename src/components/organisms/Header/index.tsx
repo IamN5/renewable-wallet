@@ -1,12 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Text, View } from 'react-native';
-import PressableIcon from '@components/PressableIcon';
+import PressableIcon from '@molecules/PressableIcon';
 import ArrowLeftIcon from '@assets/icons/ArrowLeftIcon';
 import { useNavigation } from '@react-navigation/native';
-import {
-  SafeAreaView,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import styles from './styles';
 
 interface IHeader {
