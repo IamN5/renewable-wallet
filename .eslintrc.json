@@ -18,7 +18,8 @@
       "typescript": {
         "alwaysTryTypes": true,
         "project": "./tsconfig.json"
-      }
+      },
+      "babel-module": {}
     }
   },
   "overrides": [],
@@ -52,6 +53,10 @@
         "variables": false
       }
     ],
-    "import/no-unresolved": "error"
+    "import/no-unresolved": "error",
+    "class-methods-use-this": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/require-default-props": "off",
+    "jsx-a11y/anchor-is-valid": "off"
   }
 }
