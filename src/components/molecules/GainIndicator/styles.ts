@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     color: 'black',
     lineHeight: 17,
     letterSpacing: -0.2,
+    marginLeft: 2,
   },
 });
 

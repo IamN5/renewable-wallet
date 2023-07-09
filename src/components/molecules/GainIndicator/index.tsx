@@ -8,9 +8,16 @@ import styles from './styles';
 interface IGainIndicator {
   gain: string;
   positiveGain?: boolean;
+  absoluteGain?: string;
 }
 
-function GainIndicator({ gain, positiveGain = false }: IGainIndicator) {
+function GainIndicator({
+  gain,
+  positiveGain = false,
+  absoluteGain,
+}: IGainIndicator) {
+  const gainColor = positiveGain ? palette.statusGreen : palette.statusRed;
+
   return (
     <View style={styles.container}>
       {positiveGain ? <GainIcon color="" /> : <LossIcon color="" />}
@@ -18,12 +25,16 @@ function GainIndicator({ gain, positiveGain = false }: IGainIndicator) {
         style={[
           styles.gainText,
           {
-            marginLeft: 2,
-            color: positiveGain ? palette.statusGreen : palette.statusRed,
+            color: gainColor,
           },
         ]}>
         {gain}
       </Text>
+      {!!absoluteGain && (
+        <Text style={[styles.gainText, { color: gainColor }]}>
+          ({absoluteGain})
+        </Text>
+      )}
     </View>
   );
 }

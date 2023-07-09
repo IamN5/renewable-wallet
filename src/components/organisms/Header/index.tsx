@@ -27,6 +27,7 @@ function Header({ title, subtitle, showBack }: IHeader) {
       {showBack && (
         <PressableIcon
           style={styles.backIcon}
+          containerStyle={styles.backIconContainer}
           Icon={ArrowLeftIcon}
           color="black"
           onPress={goBack}

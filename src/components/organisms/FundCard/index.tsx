@@ -4,11 +4,20 @@ import { LineChart } from 'react-native-gifted-charts';
 import { IIcon } from '@app-types/icon';
 import palette from '@utils/theme';
 import GainIndicator from '@molecules/GainIndicator';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { HomeStackParams } from '@app-types/routes';
+import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
+
+type NavigationProps = NativeStackScreenProps<
+  HomeStackParams,
+  'Home'
+>['navigation'];
 
 interface IFundCard {
   Icon: ComponentType<IIcon>;
   label: string;
+  code: string;
   value: string;
   gain: string;
   positiveGain?: boolean;
@@ -18,15 +27,20 @@ interface IFundCard {
 function FundCard({
   Icon,
   label,
+  code,
   value,
   gain,
   positiveGain = false,
   graphData,
 }: IFundCard) {
+  const navigation = useNavigation<NavigationProps>();
   const fundCardColor = positiveGain ? palette.statusGreen : palette.statusRed;
 
   const onPress = () => {
-    console.log('FundCard pressed');
+    navigation.navigate('Asset', {
+      label,
+      code,
+    });
   };
 
   return (

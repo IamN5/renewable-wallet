@@ -1,8 +1,5 @@
 import React from 'react';
 import { ScrollView, Text, View } from 'react-native';
-import Link from '@atoms/Link';
-import { useAppDispatch } from '@hooks/store';
-import { userLogout } from '@store/slices/user';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Title from '@atoms/Title';
 import FundCard from '@organisms/FundCard';
@@ -10,7 +7,6 @@ import WindIcon from '@assets/icons/WindIcon';
 import {
   plantFundData,
   solarFundData,
-  windFundData,
   windFundDetailedData,
 } from '@utils/graphs';
 import SunIcon from '@assets/icons/SunIcon';
@@ -42,6 +38,7 @@ function Home() {
           <FundCard
             Icon={WindIcon}
             label="Wind Fund"
+            code="WFND"
             value="$1032.23"
             gain="32.4%"
             positiveGain
@@ -50,6 +47,7 @@ function Home() {
           <FundCard
             Icon={SunIcon}
             label="Solar Fund"
+            code="SFND"
             value="$973.69"
             gain="6.79%"
             graphData={solarFundData}
@@ -57,6 +55,7 @@ function Home() {
           <FundCard
             Icon={LeafIcon}
             label="Plant Fund"
+            code="PFND"
             value="$5169.47"
             gain="150%"
             positiveGain
