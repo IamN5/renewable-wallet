@@ -7,8 +7,8 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
+import { Control, useController } from 'react-hook-form';
 import palette from '@utils/theme';
-import { Control, FieldValues, useController } from 'react-hook-form';
 import styles from './styles';
 
 export type IInput = TextInputProps & {
@@ -19,6 +19,7 @@ export type IInput = TextInputProps & {
   onEdit?: () => void;
   isError?: boolean;
   style?: StyleProp<ViewStyle>;
+  label?: string;
 };
 
 interface IRHFInput extends IInput {
@@ -33,6 +34,8 @@ function Input({
   onChangeText,
   onEdit,
   style,
+  label,
+  icon,
   ...props
 }: IInput) {
   const [active, setActive] = useState(false);
@@ -47,25 +50,23 @@ function Input({
 
   return (
     <View style={style}>
-      <View style={styles.inputBox}>
-        <TextInput
-          style={[styles.input, isError && styles.errorInput]}
-          value={value}
-          placeholder={placeholder}
-          onChangeText={onChangeText}
-          onFocus={onFocus}
-          onBlur={onBlur}
-          onSubmitEditing={onEdit}
-          placeholderTextColor={palette.grey}
-          {...props}
-        />
+      <View style={styles.inputView}>
+        {!!label && <Text style={styles.inputLabel}>{label}</Text>}
+        <View style={[styles.inputBox, active && styles.activeInput]}>
+          <TextInput
+            style={[styles.input, isError && styles.errorInput]}
+            value={value}
+            placeholder={placeholder}
+            onChangeText={onChangeText}
+            onFocus={onFocus}
+            onBlur={onBlur}
+            onSubmitEditing={onEdit}
+            placeholderTextColor={palette.subtitleGrey}
+            {...props}
+          />
+          {!!icon && icon}
+        </View>
       </View>
-      <View
-        style={[
-          styles.line,
-          { backgroundColor: active ? palette.primary : 'black' },
-        ]}
-      />
     </View>
   );
 }
@@ -81,9 +82,7 @@ export function RHFInput({ control, name, ...props }: IRHFInput) {
     <>
       <Input {...props} value={field.value} onChangeText={field.onChange} />
       {fieldState.error && (
-        <Text style={[styles.errorText, styles.inputError]}>
-          {fieldState.error.message}
-        </Text>
+        <Text style={styles.errorText}>{fieldState.error.message}</Text>
       )}
     </>
   );
